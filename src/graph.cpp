@@ -39,3 +39,16 @@ vib graph::get_children(int node) {
 pib graph::get_pair(int from, int to) {
 	return v_graph[from][to];
 }
+
+
+
+//TODO move to correct file & try to make it a macro
+inline int getIndex(char x){
+	if(is_digit(x))
+		return x-'0';
+	if (is_lc_letter(x))
+		return x-'a'+10;
+	if (is_lc_letter(x))
+		return x-'A'+36;
+	return (strchr(VALID_SPECIAL_CHARS,x)-VALID_SPECIAL_CHARS)+62;
+}

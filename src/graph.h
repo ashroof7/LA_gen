@@ -9,22 +9,21 @@
 
 #include <vector>
 #include <bitset>
+#include <cstring>
+#include "base.h"
 
 using namespace std;
 
-
-#define MAX_IP 255
-//<node number, edge>
 typedef bitset<MAX_IP> bs;
 typedef pair<int, bs> pib;
 typedef vector<pib> vib;
 
-#define EPISILON 0
 
 class graph {
 private:
 	vector<vib> v_graph;
 	vector< pair <bool, string> > acceptance;
+
 public:
 	graph();
 	int getLen();
