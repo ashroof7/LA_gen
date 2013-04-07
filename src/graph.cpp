@@ -40,24 +40,18 @@ pib graph::get_pair(int from, int to) {
 	return adj_list[from][to];
 }
 
-//TODO move to correct file & try to make it a macro
-inline int getIndex(char x) {
-	if (is_digit(x))
-		return x - '0';
-	if (is_lc_letter(x))
-		return x - 'a' + 10;
-	if (is_lc_letter(x))
-		return x - 'A' + 36;
-	return (strchr(VALID_SPECIAL_CHARS, x) - VALID_SPECIAL_CHARS) + 62;
-}
-
-void graph::add(int from,string edge){
+void graph::add(int from, string edge) {
 	// adds a new dest node and makes and edge from the source node to that node
 	adj_list.push_back(vib());
 
-	bs b ;
-	for(unsigned int i = 0 ; i < edge.length(); i++)
+	bs b;
+	for (unsigned int i = 0; i < edge.length(); i++)
 		b[getIndex(edge[i])] = 1;
 
-	adj_list[from].push_back(pib(adj_list.size()-1,b));
+	adj_list[from].push_back(pib(adj_list.size() - 1, b));
 }
+
+vector<pair<bool, string> > graph::get_acceptance() {
+	return acceptance;
+}
+

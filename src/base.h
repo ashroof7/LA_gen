@@ -9,6 +9,8 @@
 #define BASE_H
 
 #include <fstream>
+#include <cstring>
+
 
 #define MAX_IP 80// max input
 #define EPISILON 1
@@ -38,6 +40,17 @@ const char R_CURLY = '}';
 const char BLANK = ' ';
 const char TAB = '\t';
 const char EOL_CHAR = '\0';
+
+//TODO move to correct file & try to make it a macro
+inline int getIndex(char x) {
+	if (is_digit(x))
+		return x - '0';
+	if (is_lc_letter(x))
+		return x - 'a' + 10;
+	if (is_lc_letter(x))
+		return x - 'A' + 36;
+	return (strchr(VALID_SPECIAL_CHARS, x) - VALID_SPECIAL_CHARS) + 62;
+}
 
 #endif	/* BASE_H */
 

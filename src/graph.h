@@ -31,6 +31,7 @@ public:
 	vib get_children(int node);
 	pib get_pair(int from, int to);
 	void add(int from,string edge);
+	vector< pair< bool, string> > get_acceptance();
 
 };
 #endif	/* GRAPH_H */
