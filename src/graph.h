@@ -18,17 +18,16 @@ typedef bitset<MAX_IP> bs;
 typedef pair<int, bs> pib;
 typedef vector<pib> vib;
 
-
 class graph {
 private:
 	vector<vib> v_graph;
-	vector< pair <bool, string> > acceptance;
+	vector<pair<bool, string> > acceptance;
 
 public:
 	graph();
-	int getLen();
+	int size();
 	void insertNode();
-	void insertEdge(int from, int to, char w, bool accepted, string pattern);
+	void insertEdge(int from, int to, bs w, bool accepted, string pattern);
 	vib get_children(int node);
 	pib get_pair(int from, int to);
 

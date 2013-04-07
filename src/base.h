@@ -10,7 +10,7 @@
 
 #include <fstream>
 
-#define MAX_IP 80 // max input
+#define MAX_IP 255 // max input // to be changed
 #define EPISILON 1
 
 #define is_end_of_input(ch)       ((ch) == '\0')
@@ -30,14 +30,14 @@
 #define is_special_char(ch)       (strchr(".,;:<>/*[]+-=(){\t ",  (ch)) != 0)
 
 const char VALID_SPECIAL_CHARS[] = ".,;:<>/*[]+-=(){\t ";
-const char VALID_CHARS[] = "0123456789abcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,;:<>/*[]+-=(){\t ";
+const char VALID_CHARS[] =
+		"0123456789abcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,;:<>/*[]+-=(){\t ";
 const char EOF_CHAR = EOF;
-const char L_CURLY  = '{';
-const char R_CURLY  = '}';
-const char BLANK    = ' ';
-const char TAB      = '\t';
+const char L_CURLY = '{';
+const char R_CURLY = '}';
+const char BLANK = ' ';
+const char TAB = '\t';
 const char EOL_CHAR = '\0';
 
 #endif	/* BASE_H */
-
 
