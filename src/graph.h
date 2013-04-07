@@ -20,7 +20,7 @@ typedef vector<pib> vib;
 
 class graph {
 private:
-	vector<vib> v_graph;
+	vector<vib> adj_list;
 	vector<pair<bool, string> > acceptance;
 
 public:
@@ -30,6 +30,7 @@ public:
 	void insertEdge(int from, int to, bs w, bool accepted, string pattern);
 	vib get_children(int node);
 	pib get_pair(int from, int to);
+	void graph::add(int from,string edge);
 
 };
 #endif	/* GRAPH_H */

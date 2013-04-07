@@ -13,7 +13,7 @@ dfa::dfa(graph gg) {
 	v_graph = gg;
 
 	// initialize epsilon closure of all states
-	for (int i = 0; i < v_graph.getLen(); i++) {
+	for (int i = 0; i < v_graph.size(); i++) {
 		state_closure.push_back(epsilon_closure(i));
 	}
 }
@@ -23,9 +23,9 @@ vector<int> dfa::epsilon_closure(int node) {
 	vector<int> result;
 	queue<int> q;
 	q.push(node);
-	bool mask[v_graph.getLen()];
+	bool mask[v_graph.size()];
 
-	for (int i = 0; i < v_graph.getLen(); i++) {
+	for (int i = 0; i < v_graph.size(); i++) {
 		mask[i] = false;
 	}
 	mask[node] = true;
