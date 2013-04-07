@@ -17,14 +17,13 @@ int main() {
 	int i = 0;
 	stack<int> stack;
 
-	while (true){
-		if (s[i]=='('){
+	while (true) {
+		if (s[i] == '(') {
 //			stack.push(g.size()+1);
 
-		}else {
+		} else {
 
 		}
-
 
 	}
 

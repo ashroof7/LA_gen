@@ -29,11 +29,11 @@ void test_dfa() {
 	g.insertEdge(0, 3, bitset1, false, "");
 
 	bitset1.reset();
-	bitset1.set('1', 1);
+//	bitset1.set(getIndex('a'), 1);
 
 	g.insertEdge(1, 2, bitset1, true, "number");
 	bitset1.reset();
-	bitset1.set('a', 1);
+//	bitset1.set(getIndex('a'), 1);
 	g.insertEdge(3, 4, bitset1, true, "id");
 
 	dfa a(g);
@@ -41,4 +41,5 @@ void test_dfa() {
 	for (unsigned int i = 0; i < res.size(); ++i) {
 		cout << res[i] << endl;
 	}
+
 }

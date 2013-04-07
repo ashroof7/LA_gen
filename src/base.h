@@ -10,7 +10,7 @@
 
 #include <fstream>
 
-#define MAX_IP 255 // max input // to be changed
+#define MAX_IP 80// max input
 #define EPISILON 1
 
 #define is_end_of_input(ch)       ((ch) == '\0')
