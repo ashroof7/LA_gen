@@ -1,27 +1,9 @@
-#include <iostream>
-#include <cstdlib>
-#include <string>
-#include <iostream>
-#include <stdio.h>
-#include <math.h>
-#include <string>
-#include <fstream>
-#include <vector>
-#include <map>
-#include <stack>
-#include <sstream>
-#include <cstdlib>
-#include <fstream>
-#include <cstdlib>
-#include <stdio.h>
-#include <queue>
-#include <algorithm>
 #include "graph.h"
 
 using namespace std;
 
 graph::graph() {
-	EPSILON= -1;
+
 }
 
 int graph::getLen() {
@@ -29,7 +11,7 @@ int graph::getLen() {
 }
 
 void graph::insertNode() {
-	vii vector;
+	vib vector;
 	v_graph.push_back(vector);
 
 	pair<int, string> p;
@@ -50,10 +32,10 @@ void graph::insertEdge(int from, int to, char w, bool accepted, string pattern) 
 	acceptance[to] = p2;
 }
 
-vector< pair<int, char> > graph::get_children(int node) {
+vib graph::get_children(int node) {
 	return v_graph[node];
 }
 
-pair<int, char> graph::get_pair(int from, int to) {
+pib graph::get_pair(int from, int to) {
 	return v_graph[from][to];
 }
