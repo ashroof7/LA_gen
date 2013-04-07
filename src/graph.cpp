@@ -14,7 +14,6 @@ void graph::insertNode() {
 	vib vector;
 	v_graph.push_back(vector);
 
-
 	pair<int, string> p;
 	p.first=false;
 	p.second = "";
