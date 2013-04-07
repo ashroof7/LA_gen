@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int main() {
+void test_dfa() {
 	graph g;
 	g.insertNode();
 	g.insertNode();
@@ -41,5 +41,4 @@ int main() {
 	for (unsigned int i = 0; i < res.size(); ++i) {
 		cout << res[i] << endl;
 	}
-	return 0;
 }
