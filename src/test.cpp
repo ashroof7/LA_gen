@@ -10,6 +10,7 @@
 using namespace std;
 
 int main() {
+
 	cout<<"al3ab baleh"<<endl;
 	return 0;
 }
