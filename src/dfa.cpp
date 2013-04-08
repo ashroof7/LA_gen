@@ -12,17 +12,26 @@ map<vector<int>, int> dfa_states;
 dfa::dfa(graph gg) {
 	v_graph = gg;
 
+	int n = 0;
+	vib child = v_graph.get_children(n);
 	// initialize epsilon closure of all states
 	for (int i = 0; i < v_graph.size(); i++) {
 		state_closure.push_back(epsilon_closure(i));
 	}
+
+	// epsilon closure of first state
+	for (unsigned int i = 0; i < state_closure[0].size(); ++i) {
+		cout << state_closure[0][i] << endl;
+	}
+
 }
 
-graph conert_to_dfa() {
+graph dfa::convert_to_dfa() {
 	graph output;
 	// add start state
 	output.insertNode();
 	dfa_states[state_closure[0]] = 1;
+	cout << state_closure[0].size() << endl;
 
 	queue<vector<int> > q;
 	q.push(state_closure[0]);
@@ -34,7 +43,9 @@ graph conert_to_dfa() {
 		for (int i = 0; i < MAX_IP; i++) {
 			vector<int> under_input;
 			// loop on the ndfa states
+			cout << current_node.size() << endl;
 			for (unsigned int j = 0; j < current_node.size(); j++) {
+				cout << current_node[j] << endl;
 				// loop on children of each state
 				vib children = v_graph.get_children(current_node[j]);
 				for (unsigned int k = 0; k < children.size(); k++) {
@@ -42,13 +53,17 @@ graph conert_to_dfa() {
 					if (temp_pair.second[getIndex(VALID_CHARS[i])] == 1) {
 						under_input.push_back(temp_pair.first);
 						// merge the epsilon of the state and the under_input vector
+						cout << under_input.size() << endl;
 						under_input.insert(under_input.end(),
 								state_closure[temp_pair.first].begin(),
 								state_closure[temp_pair.first].end());
+						cout << under_input.size() << endl;
 					}
 				}
 
 			}
+
+			cout << "abo isma3el" << endl;
 			std::sort(under_input.begin(), under_input.end());
 			if (dfa_states[under_input] == 0) {
 				dfa_states[under_input] = output.size() + 1;
@@ -67,13 +82,13 @@ graph conert_to_dfa() {
 					}
 				}
 
-				output.insertEdge(dfa_states[current_node], output.size(),
+				output.insertEdge(dfa_states[current_node], output.size() - 1,
 						bitmap, is_acc, pattern);
 				q.push(under_input);
 			} else {
 				int next_state_num = dfa_states[under_input];
 				vib child_of_current_in_dfa = output.get_children(
-						current_state-1);
+						current_state - 1);
 
 				for (unsigned int j = 0; j < child_of_current_in_dfa.size();
 						j++) {
@@ -94,7 +109,6 @@ graph conert_to_dfa() {
 }
 
 vector<int> dfa::epsilon_closure(int node) {
-
 	vector<int> result;
 	queue<int> q;
 	q.push(node);
@@ -107,10 +121,16 @@ vector<int> dfa::epsilon_closure(int node) {
 
 	while (!q.empty()) {
 		int n = q.front();
+		mask[n]=true;
 		q.pop();
-		for (unsigned i = 0; i < v_graph.get_children(n).size(); i++) {
-			pib edge = v_graph.get_pair(n, i);
-			int child = edge.first;
+		vib children = v_graph.get_children(n);
+		for (unsigned int i = 0; i < children.size(); i++) {
+			// edge (to, bitset)
+			pib edge;
+			edge.first = children[i].first;
+			edge.second = children[i].second;
+
+			int child = children[i].first;
 			if (edge.second[EPISILON] == 1 && !mask[child]) {
 				result.push_back(child);
 				q.push(child);

@@ -1,21 +1,8 @@
-#include <iostream>
-#include <cstdlib>
-#include <string>
-#include <iostream>
-#include <stdio.h>
-#include <math.h>
-#include <string>
-#include <fstream>
+#include  <queue>
 #include <vector>
 #include <map>
-#include <stack>
-#include <sstream>
-#include <cstdlib>
-#include <fstream>
-#include <cstdlib>
-#include <stdio.h>
-#include <queue>
 #include <algorithm>
+#include <iostream>
 
 #include "graph.h"
 
@@ -28,6 +15,7 @@ public:
 
 	dfa(graph g);
     vector<int> epsilon_closure(int node);
+    graph convert_to_dfa();
 };
 
 #endif /*DFA_H_*/

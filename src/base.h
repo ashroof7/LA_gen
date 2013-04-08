@@ -12,8 +12,8 @@
 #include <cstring>
 
 
-#define MAX_IP 80// max input
-#define EPISILON 1
+#define MAX_IP 255// max input // be ye7saly mashakel fel epsilon_colsure lmma el epsilon = 1 -_-
+#define EPISILON 222
 
 #define is_end_of_input(ch)       ((ch) == '\0')
 #define is_layout(ch)             (!is_end_of_input(ch)  && (ch) <= ' ')
@@ -47,7 +47,7 @@ inline int getIndex(char x) {
 		return x - '0';
 	if (is_lc_letter(x))
 		return x - 'a' + 10;
-	if (is_lc_letter(x))
+	if (is_uc_letter(x))
 		return x - 'A' + 36;
 	return (strchr(VALID_SPECIAL_CHARS, x) - VALID_SPECIAL_CHARS) + 62;
 }
