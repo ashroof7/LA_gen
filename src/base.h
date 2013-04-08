@@ -12,8 +12,8 @@
 #include <cstring>
 
 
-#define MAX_IP 255// max input // be ye7saly mashakel fel epsilon_colsure lmma el epsilon = 1 -_-
-#define EPISILON 222
+#define MAX_IP 80 // max input
+#define EPSILON 79
 
 #define is_end_of_input(ch)       ((ch) == '\0')
 #define is_layout(ch)             (!is_end_of_input(ch)  && (ch) <= ' ')
@@ -30,6 +30,9 @@
 #define is_delim(ch)              (is_operator(ch) || is_separator(ch) || is_blank(ch))
 
 #define is_special_char(ch)       (strchr(".,;:<>/*[]+-=(){\t ",  (ch)) != 0)
+#define is_closure(ch)            (strchr("+*?", (ch)) != 0)
+
+
 
 const char VALID_SPECIAL_CHARS[] = ".,;:<>/*[]+-=(){\t ";
 const char VALID_CHARS[] =
@@ -42,7 +45,7 @@ const char TAB = '\t';
 const char EOL_CHAR = '\0';
 
 //TODO move to correct file & try to make it a macro
-inline int getIndex(char x) {
+inline int get_index(char x) {
 	if (is_digit(x))
 		return x - '0';
 	if (is_lc_letter(x))

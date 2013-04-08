@@ -26,7 +26,7 @@ private:
 public:
 	graph();
 	int size();
-	void insertNode();
+	int insertNode();
 	void insertEdge(int from, int to, bs w, bool accepted, string pattern);
 	vib get_children(int node);
 	pib get_pair(int from, int to);

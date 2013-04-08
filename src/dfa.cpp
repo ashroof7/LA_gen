@@ -50,7 +50,7 @@ graph dfa::convert_to_dfa() {
 				vib children = v_graph.get_children(current_node[j]);
 				for (unsigned int k = 0; k < children.size(); k++) {
 					pib temp_pair = children[k];
-					if (temp_pair.second[getIndex(VALID_CHARS[i])] == 1) {
+					if (temp_pair.second[get_index(VALID_CHARS[i])] == 1) {
 						under_input.push_back(temp_pair.first);
 						// merge the epsilon of the state and the under_input vector
 						cout << under_input.size() << endl;
@@ -69,7 +69,7 @@ graph dfa::convert_to_dfa() {
 				dfa_states[under_input] = output.size() + 1;
 				output.insertNode();
 				bs bitmap;
-				bitmap.set(getIndex(VALID_CHARS[i]), 1);
+				bitmap.set(get_index(VALID_CHARS[i]), 1);
 				bool is_acc = false;
 				string pattern = "";
 
@@ -95,7 +95,7 @@ graph dfa::convert_to_dfa() {
 					pib edge_to = child_of_current_in_dfa[j];
 					if (edge_to.first == next_state_num) {
 						child_of_current_in_dfa[j].second.set(
-								getIndex(VALID_CHARS[i]), 1);
+								get_index(VALID_CHARS[i]), 1);
 						break;
 					}
 				}
@@ -131,7 +131,7 @@ vector<int> dfa::epsilon_closure(int node) {
 			edge.second = children[i].second;
 
 			int child = children[i].first;
-			if (edge.second[EPISILON] == 1 && !mask[child]) {
+			if (edge.second[EPSILON] == 1 && !mask[child]) {
 				result.push_back(child);
 				q.push(child);
 				mask[child] = true;

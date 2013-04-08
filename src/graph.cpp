@@ -10,7 +10,7 @@ int graph::size() {
 	return adj_list.size();
 }
 
-void graph::insertNode() {
+int graph::insertNode() {
 	vib vector;
 	adj_list.push_back(vector);
 
@@ -18,6 +18,7 @@ void graph::insertNode() {
 	p.first = false;
 	p.second = "";
 	acceptance.push_back(p);
+	return adj_list.size()-1;
 }
 
 void graph::insertEdge(int from, int to, bs w, bool accepted, string pattern) {
@@ -46,7 +47,7 @@ void graph::add(int from, string edge) {
 
 	bs b;
 	for (unsigned int i = 0; i < edge.length(); i++)
-		b[getIndex(edge[i])] = 1;
+		b[get_index(edge[i])] = 1;
 
 	adj_list[from].push_back(pib(adj_list.size() - 1, b));
 }
