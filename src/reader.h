@@ -15,16 +15,17 @@ using namespace std;
 class reader {
 
 private:
-    ifstream file;
-    string current_line;
-    int current_size;
-    int char_pointer;
+	ifstream file;
+	string current_line;
+	int current_size;
+	int char_pointer;
+	bool first_read;
 
 public:
-    reader();
-    char peek();
-    void open_file(string path);
-    char get_char();
+	reader();
+	char peek();
+	void open_file(string path);
+	char get_char();
 };
 #endif	/* READER_H */
 

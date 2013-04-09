@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <iostream>
 
 using namespace std;
 
@@ -10,49 +11,54 @@ int graph::size() {
 	return adj_list.size();
 }
 
-int graph::insertNode() {
-	vib vector;
-	adj_list.push_back(vector);
-
-	pair<int, string> p;
-	p.first = false;
-	p.second = "";
-	acceptance.push_back(p);
-	return adj_list.size()-1;
+int graph::insert_node() {
+	adj_list.push_back(vib());
+	acceptance.push_back(pis(false, ""));
+	return adj_list.size() - 1;
 }
 
-void graph::insertEdge(int from, int to, bs w, bool accepted, string pattern) {
-	pib edge;
-	edge.first = to;
-	edge.second = w;
-	adj_list[from].push_back(edge);
+void graph::insert_edge(int from, int to, bs w, bool accepted, string pattern) {
+	adj_list[from].push_back(pib(to, w));
+	acceptance[to] = pis(accepted, pattern);
+}
 
-	pair<bool, string> p2;
-	p2.first = accepted;
-	p2.second = pattern;
-	acceptance[to] = p2;
+void graph::edge(int from, int to, bs w) {
+	//TODO does the other line must be here ??
+	adj_list[from].push_back(pib(to, w));
 }
 
 vib graph::get_children(int node) {
+	//TODO rename to get neighbors
 	return adj_list[node];
 }
 
-pib graph::get_pair(int from, int to) {
+pib graph::get_edge(int from, int to) {
 	return adj_list[from][to];
 }
 
-void graph::add(int from, string edge) {
-	// adds a new dest node and makes and edge from the source node to that node
-	adj_list.push_back(vib());
-
-	bs b;
-	for (unsigned int i = 0; i < edge.length(); i++)
-		b[get_index(edge[i])] = 1;
-
-	adj_list[from].push_back(pib(adj_list.size() - 1, b));
-}
-
-vector<pair<bool, string> > graph::get_acceptance() {
+vector<pis> graph::get_acceptance() {
 	return acceptance;
 }
 
+vib *graph::get_children_ptr(int node) {
+	return &adj_list[node];
+}
+
+void graph::print_graph(graph g) {
+	for (int i = 0; i < g.size(); i++) {
+		vib vec = g.get_children(i);
+		cout << "Node " << i;
+		for (unsigned int j = 0; j < vec.size(); j++) {
+			pib my_pair = vec[j];
+			cout << " goes to Node " << my_pair.first << " with chars ";
+			for (int k = 0; k < MAX_IP; k++) {
+				if (my_pair.second[k] == 1) {
+					cout << VALID_CHARS[k] << " ";
+				}
+			}
+			cout << endl;
+		}
+		cout << endl << endl;
+	}
+
+}
