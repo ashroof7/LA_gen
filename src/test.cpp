@@ -76,7 +76,7 @@ graph extract() {
 			dest = e.top(); e.pop();
 
 			g.edge(n1, src, eps);
-			g.edge(cur, n2, eps);
+			g.edge(dest, n2, eps);
 
 			if (c == '*') {
 				g.edge(dest, src, eps);
