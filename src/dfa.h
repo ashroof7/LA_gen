@@ -13,7 +13,7 @@ class dfa {
 public:
 	dfa(graph g);
 	vector<int> epsilon_closure(int node);
-	graph convert_to_dfa();
+	void convert_to_dfa(graph& g);
 };
 
 #endif /*DFA_H_*/
