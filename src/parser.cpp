@@ -145,7 +145,7 @@ graph parser::build_NFA(const vector<string> &v, const string &label) {
 		}
 
 	}
-	cout << label << endl;
+//	cout << label << endl;
 	g.insert_edge(cur, e.top(), eps, true, label);
 	src = s.top();
 	s.pop();
@@ -211,11 +211,11 @@ void parser::read(istream &fin) {
 			int dest  = g.insert_node();
 			bs b;
 			while (ss >> temp){
-				cout<<temp<<endl;
+//				cout<<temp<<endl;
 				b[get_index(temp[0])] = 1;
 			}
 			g.insert_edge(src, dest, b, true, "Punctuation");
-			g.print_graph();
+//			g.print_graph();
 			RE["Punctuation"] = g;
 		} else {
 			ss.clear();
