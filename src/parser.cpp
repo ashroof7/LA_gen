@@ -210,9 +210,12 @@ void parser::read(istream &fin) {
 			int src = g.insert_node();
 			int dest  = g.insert_node();
 			bs b;
-			while (ss >> temp)
+			while (ss >> temp){
+				cout<<temp<<endl;
 				b[get_index(temp[0])] = 1;
+			}
 			g.insert_edge(src, dest, b, true, "Punctuation");
+			g.print_graph();
 			RE["Punctuation"] = g;
 		} else {
 			ss.clear();
@@ -221,7 +224,7 @@ void parser::read(istream &fin) {
 
 			getline(ss, s);
 			trim(s);
-			cout << s << endl;
+//			cout << s << endl;
 
 			vector<string> tokens;
 			unsigned int j = 0, i = 0;
@@ -232,6 +235,9 @@ void parser::read(istream &fin) {
 //						cout << "up "<<s.substr(j, i - j + 1) << endl;
 					}
 					j = i + 1;
+				}else if (s[i]=='\\'){
+					i++;
+
 				} else if (strchr("()|*+?", s[i])
 						&& (i == 0 || s[i - 1] != '\\')) {
 					if (i - j > 0) //if not a space then push the last token from i to j

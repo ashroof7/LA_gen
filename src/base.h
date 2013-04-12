@@ -15,8 +15,8 @@
 
 using namespace std ;
 
-#define MAX_IP 90 // max input
-#define EPSILON 89
+#define MAX_IP 100 // max input
+#define EPSILON 99
 
 #define is_end_of_input(ch)       ((ch) == '\0')
 #define is_layout(ch)             (!is_end_of_input(ch)  && (ch) <= ' ')
@@ -29,18 +29,17 @@ using namespace std ;
 #define is_letter_or_digit(ch)    (is_letter(ch) || is_digit(ch))
 #define is_operator(ch)           (strchr("+-*/",   (ch)) != 0)
 #define is_separator(ch)          (strchr(";,()",   (ch)) != 0)
-#define is_blank(ch)              ((ch) == ' ' || (ch)==13 || (ch)=='\0')
-// asci of new line = 13
+#define is_blank(ch)              ((ch) == ' ')
 #define is_delim(ch)              (is_operator(ch) || is_separator(ch) || is_blank(ch))
 
-#define is_special_char(ch)       (strchr(".,;:<>/*[]+-=(){}!\t ",  (ch)) > 0)
+#define is_special_char(ch)       (strchr(".,;:<>/*[]+-=(){}\t\\!|&^%$#@\'\"? ",  (ch)) > 0)
 #define is_closure(ch)            (strchr("+*?", (ch)) != 0)
 
 
 
-const char VALID_SPECIAL_CHARS[] = ".,;:<>/*[]+-=(){}!\t ";
+const char VALID_SPECIAL_CHARS[] = ".,;:<>/*[]+-=(){}\t\\!|&^%$#@\'\"? ";
 const char VALID_CHARS[] =
-		"0123456789abcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,;:<>/*[]+-=(){}!\t ";
+		"0123456789abcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,;:<>/*[]+-=(){}\t\\!|&^%$#@\'\"? ";
 const char EOF_CHAR = EOF;
 const char L_CURLY = '{';
 const char R_CURLY = '}';

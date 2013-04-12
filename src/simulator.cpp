@@ -33,6 +33,13 @@ void simulate(graph g, int start) {
 		while (char_pointer < current_size) {
 			bool found = false;
 			c = current_line[char_pointer];
+
+			//FIXME added ashraf
+			if (c==' '){
+				char_pointer++;
+				continue;
+			}
+
 			vector<pib>* vib = g.get_children(current_node);
 			for (unsigned int var = 0; var < (*vib).size(); ++var) {
 				bs b = (*vib)[var].second;

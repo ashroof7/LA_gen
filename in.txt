@@ -1,1 +1,13 @@
- [ {          ;         }       ]
+incr : \+\+
+letter = a-z | A-Z
+digit = 0-9
+id : letter (letter|digit)*
+BooleanLiteral : (true|false)
+NullLiteral : (null)
+assign : \=
+num : ((digit)+ | (digit)+ (.(digit))?)
+addop : (\+ | \-)
+mulop : (\* | /)
+relop : (\=\= | !\= | > | >\= | < | <\=)
+[; , ( ) { }]
+{abstract continue for new switch assert default if package synchronized boolean do goto private this break double implements protected throw byte else import public throws case enum instanceof return transient catch extends int short try char final interface static void class finally long strictfp volatile const float native super while}
